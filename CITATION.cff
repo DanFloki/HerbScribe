@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use HerbScribe, please cite it as follows."
+authors:
+  - family-names: "Buono"
+    given-names: "Daniele"
+title: "HerbScribe: An AI-assisted pipeline for herbarium label information extraction"
+version: 3.1.0
+date-released: 2026-11-11
+url: "https://github.com/DanFloki/HerbScribe"
