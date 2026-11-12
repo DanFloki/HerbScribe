@@ -7,7 +7,7 @@ conda activate transcription
 
 To run the script:
 
-Rscript herbScribe_v3.1.R settings.yaml folder_images folder_final_transcriptions
+Rscript herbScribe_v3.1.R settings.yaml example_images transcriptions_example_images
 
 
 
