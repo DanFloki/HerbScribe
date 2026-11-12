@@ -1,0 +1,25 @@
+Please, read through the following OCR texts from an herbarium specimens belonging to different label types, as indicated. Some label types may be missing. Return only a JSON dictionary represented as a string which structure matches exactly the JSON dictionary specified below. If you find no information for a field, insert the empty string "". Every field must be in quotation marks ("). Do not explain your answer.
+
+JSON dictionary whith instruction for each key:
+{
+    "catalogNumber": typically a catalog number indicated on Main_label.
+    "scientificName": binomial species nomenclature, usually indicated in Main_label. But if one or more Rev_Det_label is present, then indicate the most recent species information based on date of that label.
+    "scientificNameAuthorship": the authorship for the scientificName formatted according to the conventions of the applicable Darwin Core nomenclaturalCode.
+    "infraspecificEpithet": if a name for subspecies or variety is indicated, proceded by its type (e.g. subsp. or var.)
+    "identifiedBy": a name or a list of names separated by comma indicated usually after the abbreviation Det. or in a Rev_Det_label if present
+    "collector": usually a name indicated on Main_label, following the abbreviation Leg.
+    "verbatimCollectionDate": verbatim of a date indicated on the Main_label.
+    "collectionDate": convert the verbatimCollectionDate in the format DD/MM/YYYY.
+    "country": country indicated on Main_label.
+    "locality": description of the locality where the specimen was collected.
+    "decimalLatitude": convert in decimal format the latitude indicated usually in the Main_label.
+    "decimalLongitude": convert in decimal format the longitude indicated usually in the Main_label.
+    "verbatimCoordinates": insert here coordinates indicated usually in the Main_label.
+    "minimumElevationInMeters": minimum elevation converted in meters if indicated in another unit in the text.
+    "maximumElevationInMeters": maximum elevation converted in meters if indicated in another unit in the text.
+    "notes": verbatim the content of a text of Note_label if one is present.
+    "inferredCoords": report the most plausible coordinates, in decimal format, according the locality description if no other coordinates are specified in the text.
+}
+
+Label texts are the following.
+

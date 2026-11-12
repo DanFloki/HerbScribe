@@ -1,0 +1,8 @@
+
+Classes and their explanation:
+"Main_label": one and only one of the texts must be classified as Main_label in the final table. This class corespond to a main label of an herbarium sample. Usually commences with a collection or institution name, followed by a scientific name, author(s), collector(s), collection number, localition, date, habitat, not always in this order.
+"Rev_Det_label": those texts are usually short and provides a binomial scientific name, followed by abbreviations such as "det." or "rev.," along with the determiner's name, a place, and a date. Occasionally, instead of a species name, it may include abbreviations that indicate a confirmation, such as "confirmed" "est" or "!".
+"Note_label": those texts usually include descriptions of events associated with an herbarium specimen, such as material sampling for DNA extraction, loans to other herbaria, changes of collection, storage location, and specimen imaging.
+"Other_label": texts that do not fit into any of the aforementioned classes are classified under this class.
+
+Return only a JSON dictionary represented as a string with a field for each text. Each field should have the exact text number. Do not explain your answer.

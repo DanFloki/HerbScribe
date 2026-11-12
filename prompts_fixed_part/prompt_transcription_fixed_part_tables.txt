@@ -1,0 +1,27 @@
+Read through the following texts belonging to different label types from an herbarium specimens, as indicated. Some label types may be missing. 
+I need the information presented in a table with exactly those colums names: 
+catalogNumber, scientificName, infraspecificEpithet, identifiedBy, dateLatestIdentification, collector, verbatimCollectionDate, collectionDate, country, locality, decimalLatitude, decimalLongitude, verbatimCoordinates, minimumElevationInMeters, maximumElevationInMeters, notes, inferredCoords. Here is an explanation on what to put in each column:
+
+"catalogNumber": typically a catalog number indicated on the main label.
+"scientificName": binomial species nomenclature, usually indicated in Main_label. But if one or more Rev_Det_label is present, then indicate the most recent label information.
+"scientificNameAuthorship": The authorship for the scientificName formatted according to the conventions of the applicable Darwin Core nomenclaturalCode
+"infraspecificEpithet": if a name for subspecies or variety is indicated, insert it here, proceded by its type (e.g. subsp. or var.)
+"identifiedBy": a name or a list of names separated by comma indicated usually after the abbreviation Det. or in a Rev_Det_label if present
+"dateLatestIdentification": the date indicated for the latest species identification. 
+"collector": usually a name indicated on Main_label, following the abbreviation Leg. It is not indicated in Rev_Det_label texts.
+"verbatimCollectionDate": verbatim of a date indicated on the Main_label.
+"collectionDate": convert the verbatimCollectionDate in the format DD/MM/YYYY.
+"country": country indicated on Main_label. Translate it to English if in a foreign language.
+"locality": description of the locality where the specimen was collected.
+"decimalLatitude": convert in decimal format the latitude indicated usually in the Main_label.
+"decimalLongitude": convert in decimal format the longitude indicated usually in the Main_label.
+"verbatimCoordinates": insert here coordinates indicated usually in the Main_label.
+"minimumElevationInMeters": minimum elevation converted in meters if indicated in another unit in the text.
+"maximumElevationInMeters": maximum elevation converted in meters if indicated in another unit in the text.
+"notes": copy the content of a text of Note_label if one is present.
+"inferredCoords": if there are no coordinates in any of the labels, then guess them from the locality description, and report them in decimal format.
+
+Fields are allowed to remain empty. Only return a tab separated table represented as a string. You should not explain your answer.
+
+Label texts are the following.
+

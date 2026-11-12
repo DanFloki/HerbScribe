@@ -1,0 +1,104 @@
+You will receive:
+1. A target barcode called Barcode_i.
+2. An image of a herbarium sheet containing multiple specimens, each with its own barcode.
+
+Your task is to extract text ONLY from the labels belonging to the specimen associated with Barcode_i.
+
+IMPORTANT GLOBAL RULES:
+• Multiple barcodes and multiple specimens may be present.
+• The most visually prominent or most readable barcode may NOT be the one we want.
+• Therefore, your FIRST task is to visually locate Barcode_i on the sheet.
+• DO NOT USE any labels associated with any other barcode.
+• If a label is not clearly closest to Barcode_i, exclude it.
+• If uncertain, leave fields blank rather than guess.
+
+===================================================================
+STEP 1 — LOCATE Barcode_i ON THE SHEET
+===================================================================
+1. Find the barcode whose printed text EXACTLY MATCHES Barcode_i.
+2. Read the barcode text visually. Return it under the field `"barcode"`.
+3. If the visually read barcode does NOT match Barcode_i, output the JSON structure with all fields as empty strings except `"barcode"` containing the visually read value.
+
+===================================================================
+STEP 2 — SELECT ONLY LABELS BELONGING TO Barcode_i
+===================================================================
+Use ONLY labels that are:
+• physically closest to Barcode_i, or
+• clearly grouped with it (same taped group, same specimen fragment, or same quadrant), or
+• separated by drawn/taped lines from other specimens.
+
+DO NOT use labels that are closer to another barcode.
+DO NOT merge labels from different barcodes.
+If a label belongs ambiguously to multiple barcodes, EXCLUDE it.
+
+===================================================================
+STEP 3 — IDENTIFY LABEL TYPES
+===================================================================
+Among the labels belonging to Barcode_i:
+
+A. Main Text Label  
+   • Usually oldest or largest.  
+   • Contains most information.  
+   • EXACTLY ONE label should be chosen.
+
+B. Latest Identification Label (optional)  
+   • More recent determination.  
+   • Typically includes: “Det.” + name + date (or confirmation like “!” “est” “confirmed”).  
+   • If present, its date must be more recent than any date on the Main Text Label.
+
+C. Additional Labels  
+   • Imaging labels, accession notes, mounting labels, barcodes, annotations, etc.  
+   • Combine multiple additional labels using `<sep>`.
+
+===================================================================
+STEP 4 — EXTRACT INFORMATION INTO THE EXACT JSON STRUCTURE BELOW
+===================================================================
+
+Rules:
+• Use EXACTLY these field names.
+• Do NOT add, remove, or rename fields.
+• All numeric fields must be strings.
+• If no data exists, use an empty string "".
+• No newline characters.
+• Illegible text → replace characters with "[?]".
+• Do not include any commentary outside the JSON.
+
+Return ONLY the JSON dictionary:
+
+{
+    "barcode_transcribed": "Report here the barcode as read from the label which correspond to Barcode_i",
+    "collection_name": "Complete name of the collection or institution indicated on top or bottom of the Main Text Label; may include an author and a date.",
+    "first_taxonomic_name": "The first binomial species name in Main Text Label, including infraspecific epithets if any, followed by authorship, formatted according to the conventions of the applicable Darwin Core nomenclaturalCode. Exclude text in parenthesis.",
+    "first_determiner": "The name(s) in Main Text Label responsible for first_taxonomic_name, usually indicated with 'Det.'; if unspecified, assume collector_names as the identifier; if first_taxonomic_name is empty, leave this field empty.",
+    "first_date_determination": "Date of determination of first_taxonomic_name; if unspecified, assume same of collection_date; if first_taxonomic_name is empty, leave this field empty.",
+    "latest_taxonomic_name": "The species name indicated on the Latest Identification Label, with infraspecific epithets and authorship if present, formatted according to the conventions of the applicable Darwin Core nomenclaturalCode; exclude text in parenthesis; leave this field empty if there is no Latest Identification Label.",
+    "latest_determiner": "The name(s) following 'Det.' on the Latest Identification Label, if any; leave this field empty if there is no Latest Identification Label.",
+    "latest_date_determination": "The date on the Latest Identification Label, if any; leave this field empty if there is no Latest Identification Label.",
+    "verbatim_collection_date": "Verbatim collection date as stated on the main label, even if approximate (e.g., from the expedition year with month and day).",
+    "collection_date": "Format verbatim_collection_date as DD/MM/YYYY.",
+    "collector_names": "List of collector(s) as stated on Main Text Label, usually following 'Leg.' Separate names with commas if more than one; if no collector is stated explicitly, assume it is the name indicated in collection_name, if any.",
+    "collector_number": "A catalog number on Main Text Label, typically following collector_names; may contain letters or special characters; do not include abbreviations like 'No.'",
+    "plant_description": "A description of the specimen, usually on Main Text Label, such as flower color, size, habit, root, latex, etc.",
+    "locality_description": "Verbatim description of the collection site on Main Text Label; include all relevant information to determine the site such as country, habitat, coordinates and elevation, if any.",
+    "country": "Country name in English, derived from locality_description.",
+    "verbatim_coordinates": "Coordinates as written on the main label.",
+    "latitude": "Latitude in decimal format, converted from verbatim_coordinates.",
+    "longitude": "Longitude in decimal format, converted from verbatim_coordinates.",
+    "altitude_from": "Minimum elevation in meters, converted if another unit is indicated on Main Text Label.",
+    "altitude_to": "Maximum elevation in meters, converted if another unit is indicated on Main Text Label; if not specified, repeat altitude_from.",
+    "guessed_coords": "If coordinates are missing, but the locality description is accurate enough to guess within few hundreds meters, provide plausible coordinates in decimal format based on locality_description.",
+    "habitat_description": "Description of the habitat from the Main Text Label, including soil type, plant associations or landscape details if mentioned.",
+    "notes": "The complete text from any Additional Labels; if more than one Additional Label, separate content from different labels with '<sep>'."
+    "complete_text":"The complete verbatim text from all the labels in the image, separate content from different labels with '<sep>'."
+}
+
+===================================================================
+STEP 5 — FINAL RULES
+===================================================================
+• Output ONLY the JSON dictionary.  
+• Do not explain your reasoning.  
+• Do not include chain-of-thought.  
+• Do not output labels belonging to any other barcode.
+
+===================================================================
+Barcode_i (target barcode): 

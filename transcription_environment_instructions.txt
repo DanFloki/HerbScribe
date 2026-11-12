@@ -1,0 +1,7 @@
+move with the terminal in the folder with all files:
+
+1 install conda dependencies with
+conda env create -f transcription_environment.yml
+
+2 activate conda enivornment with 
+conda activate transcription

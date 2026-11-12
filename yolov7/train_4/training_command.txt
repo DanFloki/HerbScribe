@@ -1,0 +1,14 @@
+install python 3.10 
+
+pip install numpy
+
+# comment numpy in requirements.txt
+pip install -r requirements.txt
+
+# install pythorch for current CUDA version, go on pytorch.org to get correct version, e.g. for CUDA 12.4
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+
+# option --device 0 to use GPU
+python .\train.py --img-size 640 --cfg .\cfg\training\yolov7.yaml --hyp .\training_data_3\hyp.scratch.custom.yaml --batch 20 --epochs 1000 --data .\training_data_3\data_config_file.yaml --weights .\yolov7.pt --workers 24 --name train_323_herb_picts_plus_55_Arnold --device 0
+

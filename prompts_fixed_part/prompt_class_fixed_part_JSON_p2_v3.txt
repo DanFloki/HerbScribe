@@ -1,0 +1,7 @@
+
+Classes and their explanation:
+	"Main_label": one and only one of the texts must be classified as Main_label. This class corespond to the original main label on an herbarium specimen. Usually it commences with a collection or institution name, followed by a scientific name, author(s), collector(s), collection number, localition, date, habitat, not always in this order. Dates of collection or revision in this text class are older compared to the other texts (or in other words, the text is the oldest among all the texts).
+	"Rev_Det_label": those texts are usually short and provides a binomial scientific name, followed by abbreviations such as "det." or "rev.," along with the determiner's name, a place, and a date. Occasionally, instead of a species name, it may include abbreviations that indicate a confirmation, such as "confirmed" "est" or "!". If a date is indicated, it must be more recent than the one on Main_label.
+	"Note_label": those texts usually include descriptions of events associated with an herbarium specimen, such as material sampling for DNA extraction, loans to other herbaria, changes of collection, storage location, and specimen imaging.
+	"Other_label": texts that do not fit into any of the aforementioned classes are classified under this class.
+

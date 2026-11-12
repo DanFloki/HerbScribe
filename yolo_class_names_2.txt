@@ -1,0 +1,7 @@
+Text_label
+Stamp
+Barcode
+Micro_slide
+Envelope
+Colourcheck
+Ruler

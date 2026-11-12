@@ -1,0 +1,26 @@
+Please, read through the following label texts from an herbarium specimens belonging to different label types, as indicated. Some label types may be missing. Return only a JSON dictionary represented as a string which structure matches exactly the JSON dictionary specified below, with same number of fields and field names. If you find no information for a field, insert the empty string "". Also numeric and null fields must be in quotation marks ("). Do not explain your answer.
+
+JSON dictionary whith instruction for each key:
+{
+    "verbatim_collection_date": verbatim of collection date indicated in Main_label; sometimes it can be guessed by the year of expedition plus an indication of month and day.
+    "collection_date": convert verbatim_collection_date in the format DD/MM/YYYY.
+    "collector_names": usually a name, or a list of names separeted by comma, indicated in Main_label, following the abbreviation Leg.
+    "collector_number": typically a catalog number indicated in Main_label following collector_names; it may contain letters and special characters.
+    "locality_description": description of the locality where the specimen was collected indicated in Main_label.
+    "country": name of the country, in English, corresponding to locality_description.
+    "verbatim_coordinates": coordinates indicated usually in the Main_label.
+    "latitude": convert in decimal format the latitude from verbatim_coordinates.
+    "longitude": convert in decimal format the longitude from verbatim_coordinates.
+    "altitude_from": minimum elevation converted in meters if indicated in another unit in the text.
+    "altitude_to": maximum elevation converted in meters if indicated in another unit in the text.
+    "guessed_coords": produce the most plausible coordinates, in decimal format, according the locality description if no other coordinates are specified in the text.
+    "habitat_description": description of the habitat; may include flora association and landscape features.
+    "taxonomic_name": binomial species nomenclature including infraspecific epitet if any. If one or more Rev_Det_label are present, then report the most recent species name based on the date in the labels, otherwise report the species name in Main_label.
+    "scientific_name_authorship": the authorship for the taxonomic_name formatted according to the conventions of the applicable Darwin Core nomenclaturalCode.
+    "determiner": the person name or a list of person names separated by comma following taxonomic_name indicated usually after the abbreviation Det. If one or more Rev_Det_label are present, then report the most recent person name based on the date in the labels, otherwise report the person name in Main_label.
+    "date_determination": date of determination following taxonomic_name. If one or more Rev_Det_label are present, then report the most recent date in the labels, otherwise report the date of determination in Main_label.
+    "notes": verbatim the content of text of Note_label if at least one is present. If there are more than one Note_label, just report the two texts separeted by column.
+}
+
+Label texts are the following.
+

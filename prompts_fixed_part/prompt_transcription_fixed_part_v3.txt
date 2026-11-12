@@ -1,0 +1,28 @@
+Please, read through the following label texts from an herbarium specimens belonging to different label types, as indicated. Some label types may be missing. Return only a JSON dictionary represented as a string which structure matches exactly the JSON dictionary specified below, with the same number of fields and field names. Stick carefully to the instruction for each field. If you find no information for a field, insert the empty string "". Also numeric and null fields must be in quotation marks ("). Do not explain your answer.
+
+JSON dictionary whith instruction for each key:
+{
+    "verbatim_collection_date": verbatim of a collection date indicated in Main_label text; sometimes it can be guessed by the year of expedition plus an indication of month and day.
+    "collection_date": convert verbatim_collection_date in the format DD/MM/YYYY.
+    "collector_names": a person name, or a list of person names separeted by comma, indicated in Main_label text, normally following the abbreviation Leg.
+    "collector_number": a catalog number indicated in Main_label text usually following collector_names; it may contain letters and special characters.
+    "collection_name": name of a collection indicated in Main_label text; it is usually an institution name at the beginning of the text.
+    "locality_description": description of a locality where the specimen was collected indicated in Main_label text.
+    "country": name of the country, in English, corresponding to locality_description.
+    "verbatim_coordinates": coordinates indicated usually in Main_label text.
+    "latitude": convert in decimal format the latitude from verbatim_coordinates.
+    "longitude": convert in decimal format the longitude from verbatim_coordinates.
+    "altitude_from": minimum elevation converted in meters if indicated in another unit in Main_label text.
+    "altitude_to": maximum elevation converted in meters if indicated in another unit in Main_label text.
+    "guessed_coords": if no coordinates are specified in Main_label text, please produce the most plausible coordinates, in decimal format, following locality_description.
+    "habitat_description": description of a natural habitat in Main_label text; it may include floral association and landscape features.
+    "first_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, indicated in Main_label text, followed by the authorship formatted according to the conventions of the applicable Darwin Core nomenclaturalCode.
+    "first_determiner": the person name or a list of person names separated by comma following first_taxonomic_name indicated usually after the abbreviation Det. in Main_label text. If not specified, it is assumed that collector_names is the identifier. 
+    "first_date_determination": date of determination of first_taxonomic_name in Main_label text.
+    "latest_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, followed by the authorship formatted according to the conventions of the applicable Darwin Core nomenclaturalCode, indicated on the Rev_Det_label text with the most recent date, if any.  
+    "latest_date_determination": date of determination following latest_taxonomic_name in Rev_Det_label text with most recent date.
+    "notes": verbatim the content of text of Note_label if at least one is present. If there are more than one Note_label, just report the two texts separeted by column.
+}
+
+Label types and their respective texts are the following.
+

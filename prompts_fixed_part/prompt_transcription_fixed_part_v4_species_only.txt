@@ -1,0 +1,9 @@
+You will be provided with some texts transcribed from different label classes of an herbarium specimen (delimited with XML tags). Some label classes may be missing. Return only a JSON dictionary represented as a string which structure matches exactly the JSON dictionary specified below, with the same number of fields and field names. Stick carefully to the instruction for each field. If you find no information for a field, insert the empty string "". Also numeric and null fields must be in quotation marks ("). Do not explain your answer.
+
+JSON dictionary whith instruction for each field:
+{
+	"first_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, indicated in Main_label text, followed by the authorship formatted according to the conventions of the applicable Darwin Core nomenclaturalCode.
+	"latest_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, followed by the authorship formatted according to the conventions of the applicable Darwin Core nomenclaturalCode, indicated on the Rev_Det_label text with the most recent date. If there are no Rev_Det_label, indicate here the species name on the Main_label.  
+}
+
+The labels are:

@@ -1,0 +1,2 @@
+You will be provided with a list of texts, delimited with XML tags, transcribed from different labels of an herbarium specimen. Please, classify each text in the list according to the classes and their explanations listed below the texts. The text list may consist of a single text. If a text is in a foreign language, first translate it and then proceed to the classification. The order in which the texts appear in the list is not relevant for their classification. 
+

@@ -1,0 +1,1 @@
+Please, classify each texts that follows in one of the categories listed below the texts, based on the explanation for each class. The text list may consist of a single text. If a text is in a foreign language, first translate it and then proceed to the classification.

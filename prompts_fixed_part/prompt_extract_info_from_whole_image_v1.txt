@@ -1,0 +1,44 @@
+You are provided with a Barcode_i and an image of an herbarium sheet containing multiple specimens belonging to different barcodes. Your task is to identify and categorize specific labels belonging to the Barcode_i and extract their information as specified below. The JSON dictionary format for the output is provided; match its structure exactly.
+Instructions:
+    Label Identification: find the corresponding Barcode_i label in the sheet and identify which text labels belong to the Barcode_i using clues such as proximity to the Barcode_i label or presence of lines on the sheet that separate different specimens with their respective barcodes.
+    Among the labels belonging to the Barcode_i, identify:
+        Main Text Label: Typically the oldest or largest label; it contains normally more information compared to other labels. One, and only one label has to be idenfied as such.
+        Latest Identification Label: The most recent additional label other than the Main Text Label, containing a binomial scientific name, often with "Det.", a determiner name, and a date. Occasionally, it may include abbreviations that indicate a confirmation of a previous identification, such as "confirmed" "est" or "!". If a date is indicated, it must be more recent than the one on Main_label.
+        Additional Labels: May include sampling information, imaging notes, or herbarium positioning.
+
+    Extract Information and Return as JSON: Parse information from the identified labels belonging to the Barcode_i and return it as a JSON dictionary. Do not report or combine information belonging other barcodes on the sheet. Follow these requirements:
+        The JSON dictionary must contain exactly the fields below, with names and structure unchanged.
+        If no information is available for a field, use an empty string "".
+        All numeric and null fields must be quoted as strings ("").
+        If some characters or words are illegible, replace them in the text with "[?]".
+        Do not include new line character in any field.
+        Do not include any explanations or additional text beyond the JSON output.
+
+JSON Dictionary Structure (with specific instructions for each field):
+
+{
+    "barcode": "Report here the barcode as read from the label which correspond to Barcode_i",
+    "collection_name": "Complete name of the collection or institution indicated on top or bottom of the Main Text Label; may include an author and a date.",
+    "verbatim_collection_date": "Verbatim collection date as stated on the main label, even if approximate (e.g., from the expedition year with month and day).",
+    "collection_date": "Format verbatim_collection_date as DD/MM/YYYY.",
+    "collector_names": "List of collector(s) as stated on Main Text Label, usually following 'Leg.' Separate names with commas if more than one; if no collector is stated explicitly, assume it is the name indicated in collection_name, if any.",
+    "collector_number": "A catalog number on Main Text Label, typically following collector_names; may contain letters or special characters; do not include abbreviations like 'No.'",
+    "locality_description": "Verbatim description of the collection site on Main Text Label; include all relevant information to determine the site such as country, habitat, coordinates and elevation, if any.",
+    "country": "Country name in English, derived from locality_description.",
+    "verbatim_coordinates": "Coordinates as written on the main label.",
+    "latitude": "Latitude in decimal format, converted from verbatim_coordinates.",
+    "longitude": "Longitude in decimal format, converted from verbatim_coordinates.",
+    "altitude_from": "Minimum elevation in meters, converted if another unit is indicated on Main Text Label.",
+    "altitude_to": "Maximum elevation in meters, converted if another unit is indicated on Main Text Label; if not specified, repeat altitude_from.",
+    "guessed_coords": "If coordinates are missing, but the locality description is accurate enough to guess within few hundreds meters, provide plausible coordinates in decimal format based on locality_description.",
+    "habitat_description": "Description of the habitat from the Main Text Label, including soil type, plant associations or landscape details if mentioned.",
+    "first_taxonomic_name": "The first binomial species name in Main Text Label, including infraspecific epithets if any, followed by authorship, formatted according to the conventions of the applicable Darwin Core nomenclaturalCode. Exclude text in parenthesis.",
+    "first_determiner": "The name(s) in Main Text Label responsible for first_taxonomic_name, usually indicated with 'Det.'; if unspecified, assume collector_names as the identifier; if first_taxonomic_name is empty, leave this field empty.",
+    "first_date_determination": "Date of determination of first_taxonomic_name; if unspecified, assume same of collection_date; if first_taxonomic_name is empty, leave this field empty.",
+    "latest_taxonomic_name": "The species name indicated on the Latest Identification Label, with infraspecific epithets and authorship if present, formatted according to the conventions of the applicable Darwin Core nomenclaturalCode; exclude text in parenthesis; leave this field empty if there is no Latest Identification Label.",
+    "latest_determiner": "The name(s) following 'Det.' on the Latest Identification Label, if any; leave this field empty if there is no Latest Identification Label.",
+    "latest_date_determination": "The date on the Latest Identification Label, if any; leave this field empty if there is no Latest Identification Label.",
+    "notes": "The complete text from any Additional Labels; if more than one Additional Label, separate content from different labels with '<sep>'."
+}
+
+Barcode_i: 

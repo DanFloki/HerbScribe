@@ -1,0 +1,39 @@
+You are provided with an image containing cropped labels from an herbarium specimen. Your task is to identify and categorize specific labels and extract their information as specified below. The JSON dictionary format for the output is provided; match its structure exactly.
+Instructions:
+
+    Label Identification: Identify the following labels:
+        Main Text Label: Typically the oldest or largest label.
+        Latest Identification Label: Usually the most recent, containing a species name, often with "Det.", an author, and a date.
+        Additional Labels: May include sampling information, imaging notes, or herbarium positioning.
+
+    Extract Information and Return as JSON: Parse information from the identified labels and return it as a JSON dictionary. Follow these requirements:
+        The JSON dictionary must contain exactly the fields below, with names and structure unchanged.
+        If no information is available for a field, use an empty string "".
+        All numeric and null fields must be quoted as strings ("").
+        Do not include any explanations or additional text beyond the JSON output.
+
+JSON Dictionary Structure (with specific instructions for each field):
+
+{
+    "verbatim_collection_date": "The exact collection date as stated on the main label, even if approximate (e.g., from the expedition year with month and day).",
+    "collection_date": "Format verbatim_collection_date as DD/MM/YYYY.",
+    "collector_names": "List of collector(s) as stated on the main label, usually following 'Leg.' Separate names with commas if more than one.",
+    "collector_number": "A catalog number typically following collector_names; may contain letters or special characters.",
+    "collection_name": "Name of the collection or institution, generally at the beginning of the main label.",
+    "locality_description": "Description of the collection site as stated on the main label.",
+    "country": "Country name in English, derived from locality_description.",
+    "verbatim_coordinates": "Coordinates as written on the main label.",
+    "latitude": "Latitude in decimal format, converted from verbatim_coordinates.",
+    "longitude": "Longitude in decimal format, converted from verbatim_coordinates.",
+    "altitude_from": "Minimum elevation in meters, converted if another unit is indicated on the main label.",
+    "altitude_to": "Maximum elevation in meters, converted if another unit is indicated on the main label.",
+    "guessed_coords": "If coordinates are missing, provide plausible coordinates in decimal format based on locality_description, if available.",
+    "habitat_description": "Description of the habitat from the main label, including plant associations or landscape details if mentioned.",
+    "first_taxonomic_name": "The first binomial species name on the main label, including infraspecific epithets if any, followed by authorship.",
+    "first_determiner": "The name(s) following 'Det.' in the main label after first_taxonomic_name; if unspecified, use collector_names as the identifier.",
+    "first_date_determination": "Date of the first determination; if unspecified, assume collection_date.",
+    "latest_taxonomic_name": "The latest species name on the most recent identification label, with infraspecific epithets and authorship if present.",
+    "latest_determiner": "The name(s) following 'Det.' on the latest identification label, if available.",
+    "latest_date_determination": "The most recent date on the latest identification label, if available.",
+    "notes": "All text from additional labels, if any. Separate multiple labels with '<sep>'."
+}

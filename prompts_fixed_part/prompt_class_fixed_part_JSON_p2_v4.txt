@@ -1,0 +1,49 @@
+</text_list>
+
+<class_list>
+	<Main_label>
+		<description>
+			One and only one of the texts can be classified as Main_label. Usually this text is longer compared to the other text classes. Normally, the first line is the name of a collection or an institution, followed by a scientific name, author(s), collector(s), collection number, locality, date, habitat (not always in this order). Dates of collection and/or determination in this text predate those of the other texts.
+		</description>
+		<example>
+			<![CDATA[
+			Botanische Staatssammlung München 
+			Astragalus sulcatus L. Österreich: Niederösterreich. 
+			Nördlich Podersdorf am Neusiedler See 
+			19.6.1984 leg. O.Angerer
+			]]>
+		</example>
+	</Main_label>
+	<Rev_Det_label>
+		<description>
+			Those texts are usually short, and provide a binomial scientific name, followed by abbreviations such as &quot;det.&quot; or &quot;rev.,&quot; along with the determiner&apos;s name, a place, and a date. Instead of a species name, it may include abbreviations that indicate a confirmation of the previous most recent identification, such as &quot;confirmed&quot; &quot;est&quot; or &quot;!&quot;. The date indicated in this text is always more recent than the one on Main_label.
+		</description>
+		<example>
+			<![CDATA[
+			Astragalus mirabilis Lipsky (§ Pendulina) 1995 det.rev. D. PODLECH München 1988
+			]]>
+		</example>
+	</Rev_Det_label>
+	<Note_label>
+		<description>
+			Those texts are usually short, and include descriptions of events or status associated with the herbarium specimen, such as material sampling for DNA extraction and genetic studies, loans to other herbaria, addition to a collection, storage, and specimen imaging.
+		</description>
+		<example>
+			<![CDATA[
+			Leaf sample taken for phylogenetic studies of Astragalus Z. Khalili (TMU) Jun. 2018
+			]]>
+		</example>
+	</Note_label>
+	<Other_label>
+		<description>
+			Texts that do not fit into any of the aforementioned classes are classified under this class. This text may contain codes (e.g. M-123456789) or very little information (for example only two or three words).
+		</description>
+		<example>
+			<![CDATA[
+			m 12345678910 copyright reserved HERBARIUM MSB LMU MÜNCHEN
+			]]>
+		</example>
+	</Other_label>
+</class_list>
+
+

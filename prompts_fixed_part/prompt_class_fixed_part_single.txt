@@ -1,0 +1,15 @@
+please, categorize each OCR text obtained from labels in one of the following categories, based on the explanation for each category. If the OCR text is in a foreign language, first translate it and then proceed to the categorization.
+
+Main_label: if the text has much more words to the others, then it is the Main_label. The text starts normally with a collection name, followed by species name, collectors name, collection date, collection locality and description, number of collection.
+Rev_Det_label: the text provides information on species identification. It contains a species name in the form of a binomial nomenclature, followed typically by abbreviations like det. or rev., and a name followed by place and date determination.
+Note_label: usually, the text described some event related to the herbarium specimen, such as material sampling for DNA extraction, borrowing to other herbaria, storage location, imaging of specimen.
+Blank_label: the text is an empty string.
+Other_label: the text cannot be classified in one of the other categories.
+
+Only one of the OCR texts can be categorize as Main_label, the other texts have to be categorize as different category. The order of the OCR texts does not matter to its categorization. Don't explain your answer. Reply only with a table in string format separeted by a single space which contains the number of the texts and the respective category names, as in this example:
+
+Label_nr Category
+X YYYY
+
+OCR texts:
+

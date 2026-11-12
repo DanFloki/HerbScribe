@@ -1,0 +1,6 @@
+You will be provided with a list of texts, delimited with XML tags, transcribed from different labels of an herbarium specimen. Your tasks are the following: 
+First, if a text is in a foreign language, translate it. 
+Second, notice the dates on each texts to deterime which one is the oldest. 
+Finally, classify each text according to the classes and their explanations listed below the texts. The order in which the texts appear in the list is not relevant for their classification. Return only a JSON dictionary represented as a string with a field for each text. Each field of the JSON answer should have the exact text name. If there are more than one text classified as "Main_label", correct your reply. Do not explain your answer.
+
+

@@ -1,0 +1,26 @@
+You are provided with an image containing cropped labels from an herbarium specimen. First, identify the main text label of the specimen (usually the oldest or biggest label), the latest identification label (short text labels with a species name, usually followed by "Det", author and a date of identification) and additional text labels such as sampling, imaging, herbarium position. Some of those labels may be missing. Then, return a JSON dictionary represented as a string which structure matches exactly the JSON dictionary specified below, with the same number of fields and field names. Stick carefully to the instruction for each field. If you find no information for a field, insert the empty string "". Also numeric and null fields must be in quotation marks ("). Do not explain your answer.
+
+JSON dictionary whith instruction for each field:
+{
+	"verbatim_collection_date": verbatim of a collection date indicated on the main label; sometimes it can be guessed by the year of expedition plus an indication of month and day.
+	"collection_date": convert verbatim_collection_date in the format DD/MM/YYYY.
+	"collector_names": a person name, or a list of person names separeted by comma, indicated on the main label, normally following the abbreviation Leg.
+	"collector_number": a catalog number indicated on the main label usually following collector_names; it may contain letters and special characters.
+	"collection_name": name of a collection indicated on the main label; it is usually an institution name at the beginning of the text.
+	"locality_description": description of a locality where the specimen was collected indicate on the main label.
+	"country": name of the country, in English, corresponding to locality_description.
+	"verbatim_coordinates": coordinates indicated on the main label.
+	"latitude": convert in decimal format the latitude from verbatim_coordinates.
+	"longitude": convert in decimal format the longitude from verbatim_coordinates.
+	"altitude_from": minimum elevation converted in meters if indicated in another unit on the main label.
+	"altitude_to": maximum elevation converted in meters if indicated in another unit on the main label.
+	"guessed_coords": if no coordinates are specified in the main label, please produce the most plausible coordinates, in decimal format, following locality_description if provided.
+	"habitat_description": description of a natural habitat on the main label; it may include floral association and landscape features.
+	"first_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, indicated in the main label, followed by the authorship.
+	"first_determiner": the person name or a list of person names separated by comma following first_taxonomic_name indicated usually after the abbreviation Det. in the main label. If not specified, assume that collector_names is the identifier. 
+	"first_date_determination": date of determination of first_taxonomic_name indicated in the main label, if not specified assume is same as collection_date.
+	"latest_taxonomic_name": binomial species nomenclature, including infraspecific epitet if any, followed by the authorship, indicated on the latest additional identification label with the most recent date, if any.  
+	"latest_determiner": the person name or a list of person names separated by comma following latest_taxonomic_name indicated on the latest additional identification label with the most recent date, if any.
+	"latest_date_determination": date on the latest additional identification label with the most recent date, if any.
+	"notes": verbatim the text of all additional labels if any. If there are more than one additional label,report all texts separated by "<sep>".
+}

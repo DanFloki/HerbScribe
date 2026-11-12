@@ -1,0 +1,2 @@
+I have a list of texts transcribed from different labels of an herbarium specimen. Please, classify each text in the list according to the classes and their explanations listed below the texts. If a text is in a foreign language, first translate it and then proceed to the classification. The order in which the texts appear in the list is not relevant for their classification. 
+

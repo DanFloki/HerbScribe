@@ -1,0 +1,59 @@
+directories:
+  EXP: exp_n/
+  ORIGINAL_IMAGES: 0_original_images/
+  RESIZED_IMAGES: 1_resized_original_images/
+  YOLO_LABELS: 2_yolo_detection_boundaries/
+  YOLO_CROPPED_IMAGES: 3_cropped_yolo_objects/
+  TEXT_LABEL_COLLAGES: 4_text_label_collages/
+  OCR_TRANSCRIBED_LABELS: 4_transcribed_labels/
+  PROMPTS_CLASSIFY: 5_prompts_classification/
+  CLASS_LABELS: 6_classified_labels/
+  PROMPTS_TRANSCRIPTION: 7_transcription_prompts/
+  CHATGPT_EXTRACTED_INFO: 8_chatGPT_extracted_info_jsons/
+  DUPLICATED_BARCODES: 0_duplicated_barcode/
+  DUPLICATED_IMAGES: 0_duplicated_images/ 
+  NO_TEXT_LABELS: 0_no_text_labels/
+
+look_sub_dirs: F #looks for pictures also in subdirectories
+exclude_multi_barcode_picts: F #check if there are more than one picture per barcode
+
+yolo_weights: yolov7/train_4/best.pt #trained yolo v7 weights
+yolo_class_names: yolo_class_names_2.txt #names of classes recognized by yolo
+
+google_credentials: #only necessary if using OCR. Indicate here json file containing credentials, e.g. googleOCR/googleOCR-4310-9e8XX693a7a6.json
+
+openAI_API_key: # put here your openAI API key, e.g. sk-proj-swK5GEBzXRbRrIGXkZ9yeX0iDWbYYaqMn4evpTYXXX-RMf10A
+chatGPTversion: gpt-6-sol #gpt-5.4 | gpt-4.1-2025-04-14 | gpt-5 | gpt-4o-2024-08-06
+temperature: 1 # 0 less creative, 2 more creative; values different than 1 availabe only for some versions of GPT older than 5.4
+price_1M_input_tokens: 2 #cost in $ relative to version
+price_1M_output_tokens: 10 #cost in $ relative to version
+
+imgs_ChatGPT: T # if you want to send directly the label images to chatGPT skipping the OCR
+
+crop_ruler: F
+crop_only_labels: T # if F, it will crop all objected detected from specimens, e.g. rulers, colorcheckers, etc., but it will only send text label object to OCR or the LLM
+resize_imgs: T # to compress images to a certain size in MB specified below
+images_max_size_Mb: 2 # recommended 2 MB
+clean_intermediate_files: F
+max_attempts_gpt: 3 # if a call to GPT fail, try this amount of time
+cores_resizing_img: 6 # how many CPU core to use when resizing images
+cores_crop_img: 6 # how many CPU core to use when cropping images
+
+# prompts for chatGPT
+prompt_transcription_whole_img: prompts_fixed_part/prompt_extract_info_from_whole_image_v2.txt
+prompt_transcription_img_labels: prompts_fixed_part/prompt_extract_info_from_image_v5.txt
+prompt_class_fixed_p1: prompts_fixed_part/prompt_class_fixed_part_JSON_p1_v4.txt
+prompt_class_fixed_p2: prompts_fixed_part/prompt_class_fixed_part_JSON_p2_v4.txt
+prompt_transcription: prompts_fixed_part/prompt_transcription_fixed_part_v4.txt
+
+use_formatted_transcribed_text: F # useful if using OCR, includes new lines inside OCR text
+json_dictionary: valid_JSON_dictionary_v5.json # necessary to verify that the answer from GPT contains the exact field requested (structure of this file needs to match with description in the prompt)
+json_dictionary_whole_img: valid_JSON_dictionary_multi.json
+
+# can skip some steps if already performed
+skip_step_resize: F
+skip_step_yolo: F
+skip_step_crop_yolo_labels: F
+skip_creating_collage: F
+skip_step_googleOCR: F
+skip_step_classifyLabels: F

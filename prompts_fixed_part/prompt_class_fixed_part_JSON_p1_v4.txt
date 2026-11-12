@@ -1,0 +1,6 @@
+You will be provided with a list of texts transcribed from different labels of an herbarium specimen. Follow strictly this steps: 
+1. Classify each text according to class_list listed below. Note that only one of the text can belong to the class Main_label.
+2. Construct a JSON dictionary with a field for each text. Each field of the JSON answer should have the exact text id.
+3. Check that in the JSON dictionary there is one and only one text classified as "Main_label". If not, correct your reply by classifying only the most probable text as Main_label.
+4. Return only the JSON dictionary represented as a string. Do not explain your answer.
+<text_list>

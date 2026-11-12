@@ -1,0 +1,14 @@
+
+Classes and their explanation:
+"Main_label": there must be one and only one of the texts classified as Main_label in the final table. Main_label text has much more words than other texts in the list (if any); usually commences with a collection name, followed by a scientific species name, a person name, a date, a locality, a description of the locality, and a number of collection, not always in this order.
+"Rev_Det_label": this class is usually short and provides a binomial scientific name, followed by abbreviations such as "det." or "rev.," along with the name of a person, a place, and a date. Occasionally, instead of a species name, it may include words that indicate a confirmation, such as "confirmed" "est" or just "!".
+"Note_label": this class usually includes descriptions of events associated with an herbarium specimen, such as material sampling for DNA extraction, loans to other herbaria, changes of collection, storage location, specimen imaging.
+"Other_label": Texts that do not fit into any of the aforementioned classes are classified under this class.
+
+The order in which the texts appear in the list is not relevant for their categorization. Don't explain your answer. Reply only with a table in string format separated by a single space whith headers "Label_nr" and "Class", the number of the text and the respective category name, as in this example:
+
+Label_nr Class
+3 Rev_Det_label
+5 Main_label
+
+The output table needs to have one entry for each text.
