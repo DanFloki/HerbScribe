@@ -1,5 +1,8 @@
+You need a linux OS to run this script.
 
-To install dependencies via conda:
+The command line tool imagemagick is necessary.
+
+To install dependencies necessary to run yolo v7 via conda:
 conda env create -f transcription_environment.yml
 
 before starting the transcription, activate the conda environment:
