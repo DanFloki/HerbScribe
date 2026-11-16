@@ -40,11 +40,11 @@ cores_resizing_img: 6 # how many CPU core to use when resizing images
 cores_crop_img: 6 # how many CPU core to use when cropping images
 
 # prompts for chatGPT
-prompt_transcription_whole_img: prompts_fixed_part/prompt_extract_info_from_whole_image_v2.txt
-prompt_transcription_img_labels: prompts_fixed_part/prompt_extract_info_from_image_v5.txt
-prompt_class_fixed_p1: prompts_fixed_part/prompt_class_fixed_part_JSON_p1_v4.txt
-prompt_class_fixed_p2: prompts_fixed_part/prompt_class_fixed_part_JSON_p2_v4.txt
-prompt_transcription: prompts_fixed_part/prompt_transcription_fixed_part_v4.txt
+prompt_transcription_whole_img: prompts_fixed_part/prompt_extract_info_from_whole_image_v2.txt # for whole uncropped images, necessary for accessory script transcribe_labels_multibarcode.R
+prompt_transcription_img_labels: prompts_fixed_part/prompt_extract_info_from_image_v5.txt # prompt used when transcribing from label images directly
+prompt_class_fixed_p1: prompts_fixed_part/prompt_class_fixed_part_JSON_p1_v4.txt # prompt used when transcribing from OCR text
+prompt_class_fixed_p2: prompts_fixed_part/prompt_class_fixed_part_JSON_p2_v4.txt # prompt used when transcribing from OCR text
+prompt_transcription: prompts_fixed_part/prompt_transcription_fixed_part_v4.txt # prompt used when transcribing from OCR text
 
 use_formatted_transcribed_text: F # useful if using OCR, includes new lines inside OCR text
 json_dictionary: valid_JSON_dictionary_v5.json # necessary to verify that the answer from GPT contains the exact field requested (structure of this file needs to match with description in the prompt)
