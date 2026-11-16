@@ -1,12 +1,11 @@
-You need a linux OS to run this script.
+This script run only on linux OS.
 
-The command line tool imagemagick is necessary.
-
-To install dependencies necessary to run yolo v7 via conda:
-conda env create -f transcription_environment.yml
-
-before starting the transcription, activate the conda environment:
-conda activate transcription
+You need:
+- The command line tool imagemagick (sudo apt install imagemagick).
+- dependencies necessary to run yolo v7 via conda:
+    conda env create -f transcription_environment.yml
+    before starting the transcription, activate the conda environment:
+    conda activate transcription
 
 You need to obtain your personal OpenAI API key (https://platform.openai.com/), and include it into the settings.yaml file.
 
